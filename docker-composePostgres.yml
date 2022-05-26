@@ -1,0 +1,24 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+
+
+
+
+  db:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - 5433:5432
+    networks:
+      - asa-network
+    container_name: db
+    volumes:
+      - ./confs:/var/lib/postgresql/data/
+
+networks:
+  asa-network:
+    external: true
